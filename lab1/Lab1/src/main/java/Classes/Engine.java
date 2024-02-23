@@ -9,7 +9,7 @@ public class Engine {
      * @param capacity
      * @param manufacturer
      */
-    public Engine(int capacity, String manufacturer) {
+    public Engine(double capacity, String manufacturer) {
         Capacity = capacity;
         Manufacturer = manufacturer;
     }
