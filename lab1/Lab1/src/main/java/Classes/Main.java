@@ -3,16 +3,25 @@ package Classes;
 import Classes.Repositories.CarRepository;
 import Classes.Repositories.DriverRepository;
 import Classes.Repositories.EngineRepository;
+import Classes.Repositories.RepositoryGUI;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import javax.swing.*;
 public class Main {
     /**
-     * Главны                                                          й метод
+     * Главный метод
      * @param args
      */
     public static void main(String[] args) {
+        RepositoryGUI repositoryGUI = new RepositoryGUI();
+
+        repositoryGUI.createAndShowGUI();
+
+/*
+
         DriverRepository driverRepository = new DriverRepository();
         EngineRepository engineRepository = new EngineRepository();
         CarRepository carRepository = new CarRepository();
@@ -115,7 +124,7 @@ public class Main {
                 default:
                     System.out.println("Неверный выбор. Попробуйте снова.");
             }
-        } while (choice != 0);
+        } while (choice != 0);*/
     }
 
     private static Driver GetDriver(){
@@ -139,7 +148,7 @@ public class Main {
     }
 
     private static String displayDriver(Driver driver){
-        return " ФИО: " +  driver.FIO + ", Стаж: " + driver.Experiense;
+        return " ФИО: " +  driver.FIO + ", Стаж: " + driver.Experience;
     }
 
     private static Engine GetEngine(){
