@@ -52,12 +52,12 @@ public class RepositoryGUI {
         JFrame frameForEnginesInfo = new JFrame("Engine Information");
         frameForEnginesInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameForEnginesInfo.setResizable(false);
-        frameForEnginesInfo.setSize(300,200);
+        frameForEnginesInfo.setSize(350,200);
 
         JFrame frameForDriversInfo = new JFrame("Driver Information");
         frameForDriversInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameForDriversInfo.setResizable(false);
-        frameForDriversInfo.setSize(300, 200);
+        frameForDriversInfo.setSize(350, 200);
 
         JFrame frameForUpdateCar = new JFrame("Update driver");
         frameForUpdateCar.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -124,19 +124,20 @@ public class RepositoryGUI {
         JButton okForUpdateEngineButton = new JButton("Обновить");
         JButton badForUpdateEngineButton = new JButton("Отмена");
 
-        JButton okForDeleteCarButton = new JButton("Обновить");
+        JButton okForDeleteCarButton = new JButton("Удалить");
         JButton badForDeleteCarButton = new JButton("Отмена");
 
-        JButton okForDeleteDriverButton = new JButton("Обновить");
+        JButton okForDeleteDriverButton = new JButton("Удалить");
         JButton badForDeleteDriverButton = new JButton("Отмена");
 
-        JButton okForDeleteEngineButton = new JButton("Обновить");
+        JButton okForDeleteEngineButton = new JButton("Удалить");
         JButton badForDeleteEngineButton = new JButton("Отмена");
 
         // Создаём форматы для числовых полей
         NumberFormat doubleFormat = NumberFormat.getInstance();
         doubleFormat.setGroupingUsed(false);
         NumberFormat intFormat = NumberFormat.getIntegerInstance();
+        intFormat.setGroupingUsed(false);
         intFormat.setMaximumFractionDigits(0);
 
         // Создаём поля для ввода данных
@@ -560,6 +561,27 @@ public class RepositoryGUI {
             }
         });
 
+        okForDeleteCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                long idValue = (long) fieldForIdCarDelete.getValue();
+                int id = (int) idValue;
+
+                carRepository.DeleteCarById(id);
+
+                fieldForIdCarDelete.setText("");
+            }
+        });
+
+        badForDeleteCarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameForDeleteCar.setVisible(false);
+
+                fieldForIdCarDelete.setText("");
+            }
+        });
+
         driverDeleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -567,10 +589,52 @@ public class RepositoryGUI {
             }
         });
 
+        okForDeleteDriverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                long idValue = (long) fieldForIdDriverDelete.getValue();
+                int id = (int) idValue;
+
+                driverRepository.DeleteDriverById(id);
+
+                fieldForIdDriverDelete.setText("");
+            }
+        });
+
+        badForDeleteDriverButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameForDeleteDriver.setVisible(false);
+
+                fieldForIdDriverDelete.setText("");
+            }
+        });
+
         engineDeleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frameForDeleteEngine.setVisible(true);
+            }
+        });
+
+        okForDeleteEngineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                long idValue = (long) fieldForIdEngineDelete.getValue();
+                int id = (int) idValue;
+
+                engineRepository.DeleteEngineById(id);
+
+                fieldForIdEngineDelete.setText("");
+            }
+        });
+
+        badForDeleteEngineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frameForDeleteEngine.setVisible(false);
+
+                fieldForIdEngineDelete.setText("");
             }
         });
 

@@ -9,7 +9,7 @@ public class BinarySearch {
      */
     public static int binarySearch(int[] arr, int x) {
         if(!ArraySorted.isSorted(arr))
-            return -1;
+            return -2;
         int leftBorder = 0, rightBorder = arr.length - 1;
         while (leftBorder <= rightBorder) {
             int m = (leftBorder + rightBorder ) / 2;
