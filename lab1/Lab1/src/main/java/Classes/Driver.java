@@ -2,15 +2,15 @@ package Classes;
 
 public class Driver {
     public String FIO;
-    public int Experiense;
+    public int Experience;
 
     /**
      * Конструктор
      * @param fio
-     * @param experiense
+     * @param experience
      */
-    public Driver(String fio, int experiense) {
+    public Driver(String fio, int experience) {
         FIO = fio;
-        Experiense = experiense;
+        Experience = experience;
     }
 }
